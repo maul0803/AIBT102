@@ -29,8 +29,108 @@ import random
 
 UA = "TrouveTonBusinessLocal/1.0"
 OVERPASS = "https://overpass-api.de/api/interpreter"
-DEPARTMENT_NAME = "Haute-Garonne"
-#DEPARTMENT_NAME = "Paris"
+
+DEPARTMENT_LIST = [
+    "Ain",
+    "Aisne",
+    "Allier",
+    "Alpes-de-Haute-Provence",
+    "Hautes-Alpes",
+    "Alpes-Maritimes",
+    "Ardèche",
+    "Ardennes",
+    "Ariège",
+    "Aube",
+    "Aude",
+    "Aveyron",
+    "Bouches-du-Rhône",
+    "Calvados",
+    "Cantal",
+    "Charente",
+    "Charente-Maritime",
+    "Cher",
+    "Corrèze",
+    "Côte-d'Or",
+    "Côtes-d'Armor",
+    "Creuse",
+    "Dordogne",
+    "Doubs",
+    "Drôme",
+    "Eure",
+    "Eure-et-Loir",
+    "Finistère",
+    "Gard",
+    "Haute-Garonne",
+    "Gers",
+    "Gironde",
+    "Hérault",
+    "Ille-et-Vilaine",
+    "Indre",
+    "Indre-et-Loire",
+    "Isère",
+    "Jura",
+    "Landes",
+    "Loir-et-Cher",
+    "Loire",
+    "Haute-Loire",
+    "Loire-Atlantique",
+    "Loiret",
+    "Lot",
+    "Lot-et-Garonne",
+    "Lozère",
+    "Maine-et-Loire",
+    "Manche",
+    "Marne",
+    "Haute-Marne",
+    "Mayenne",
+    "Meurthe-et-Moselle",
+    "Meuse",
+    "Morbihan",
+    "Moselle",
+    "Nièvre",
+    "Nord",
+    "Oise",
+    "Orne",
+    "Pas-de-Calais",
+    "Puy-de-Dôme",
+    "Pyrénées-Atlantiques",
+    "Hautes-Pyrénées",
+    "Pyrénées-Orientales",
+    "Bas-Rhin",
+    "Haut-Rhin",
+    "Rhône",
+    "Haute-Saône",
+    "Saône-et-Loire",
+    "Sarthe",
+    "Savoie",
+    "Haute-Savoie",
+    "Paris",
+    "Seine-Maritime",
+    "Seine-et-Marne",
+    "Yvelines",
+    "Deux-Sèvres",
+    "Somme",
+    "Tarn",
+    "Tarn-et-Garonne",
+    "Var",
+    "Vaucluse",
+    "Vendée",
+    "Vienne",
+    "Haute-Vienne",
+    "Vosges",
+    "Yonne",
+    "Territoire de Belfort",
+    "Essonne",
+    "Hauts-de-Seine",
+    "Seine-Saint-Denis",
+    "Val-de-Marne",
+    "Val-d'Oise"
+]
+
+DEPARTMENT_LIST = [
+    "Paris",
+    "Haute-Garonne",
+]
 
 def get_json(url, data=None, max_retries=7, timeout=180):
     """
@@ -280,32 +380,32 @@ def main():
     Download commercial establishments for the configured department
     and export the results to CSV.
     """
+    for department_name in DEPARTMENT_LIST:
+        print("=" * 55)
+        print("DEPARTMENT COMMERCIAL ESTABLISHMENTS DOWNLOAD")
+        print("=" * 55)
 
-    print("=" * 55)
-    print("DEPARTMENT COMMERCIAL ESTABLISHMENTS DOWNLOAD")
-    print("=" * 55)
+        rows = download_department_commerces(department_name)
 
-    rows = download_department_commerces(DEPARTMENT_NAME)
+        output_dir = "raw_resources/commerces"
+        os.makedirs(output_dir, exist_ok=True)
 
-    output_dir = "raw_resources/commerces"
-    os.makedirs(output_dir, exist_ok=True)
+        output_name = (
+            f"commerces_osm_{department_name.lower().replace(' ', '_')}.csv"
+        )
 
-    output_name = (
-        f"commerces_osm_{DEPARTMENT_NAME.lower().replace(' ', '_')}.csv"
-    )
+        output = os.path.join(output_dir, output_name)
 
-    output = os.path.join(output_dir, output_name)
+        save_csv(output, rows)
 
-    save_csv(output, rows)
+        print("\n" + "=" * 55)
+        print("DOWNLOAD COMPLETED!")
+        print("=" * 55)
 
-    print("\n" + "=" * 55)
-    print("DOWNLOAD COMPLETED!")
-    print("=" * 55)
-
-    print(f"Department: {DEPARTMENT_NAME}")
-    print(f"Total number of rows: {len(rows)}")
-    print(f"Establishments with a name: {sum(bool(r['name']) for r in rows)}")
-    print(f"CSV file: {output}")
+        print(f"Department: {department_name}")
+        print(f"Total number of rows: {len(rows)}")
+        print(f"Establishments with a name: {sum(bool(r['name']) for r in rows)}")
+        print(f"CSV file: {output}")
 
 
 if __name__ == "__main__":
