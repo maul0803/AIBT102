@@ -1,0 +1,6 @@
+legacy*
+pyproject.toml
+.venv
+.idea
+processed_resources/*
+raw_resources/*

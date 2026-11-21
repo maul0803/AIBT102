@@ -1,0 +1,8 @@
+create_iris_2022_to_iris_2025_conversion_table.py:
+    - Crée une table de conversion des IRIS à partir des IRIS de 2022 et de 2025.
+convert_iris_2022_to_iris_2025.py:
+    - Permet de mapper les données des resources des individus de 2021 contenus dans BASE_TD_FILO_IRIS_2021_DISP_CSV sur des IRIS de 2025.
+download_all_department_commerces.py:
+    - Télécharge tous les restaurant d'un département en utilisant openstreetmap
+map_all_department_commerces_to_2025_iris.py:
+    - Associe chaque commerces d'un départemnt à un IRIS de 2025.
