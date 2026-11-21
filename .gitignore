@@ -2,5 +2,6 @@ legacy*
 pyproject.toml
 .venv
 .idea
-processed_resources/*
-raw_resources/*
+scraping_and_preprocessing/raw_resources/*
+scraping_and_preprocessing/processed_resources/*
+cleaning/cleaned_resources/*
