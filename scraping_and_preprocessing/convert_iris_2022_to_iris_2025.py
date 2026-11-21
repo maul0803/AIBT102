@@ -88,7 +88,7 @@ colonnes_indicateurs = [
 # Conversion des indicateurs en valeurs numériques
 for col in colonnes_indicateurs:
     donnees[col] = pd.to_numeric(
-        donnees[col],
+        donnees[col].astype("string").str.replace(",", ".", regex=False),
         errors="coerce"
     )
 
@@ -228,6 +228,14 @@ df_final.to_csv(
     encoding="utf-8-sig"
 )
 
+print("Colonnes initiales :", len(donnees.columns))
+print("Colonnes finales :", len(df_final.columns))
+
+print("\nColonnes initiales :")
+print(donnees.columns.tolist())
+
+print("\nColonnes finales :")
+print(df_final.columns.tolist())
 # =====================================================
 # 8. EXPORT DES CONTROLES
 # =====================================================
