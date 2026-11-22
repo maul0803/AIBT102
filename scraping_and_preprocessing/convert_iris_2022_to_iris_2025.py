@@ -10,8 +10,8 @@ from pathlib import Path
 # =====================================================
 
 
-RAW_PATH = Path("raw_resources")
-PROCESSED_PATH = Path('processed_resources')
+RAW_PATH = Path("raw_data")
+PROCESSED_PATH = Path('processed_data')
 FICHIER_DONNEES_2022 = (
     RAW_PATH
     / "BASE_TD_FILO_IRIS_2021_DISP_CSV"

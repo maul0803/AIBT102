@@ -109,7 +109,7 @@ DEPARTMENT_LIST = [
     "Haute-Garonne",
 ]
 
-IRIS_FILE = "raw_resources/CONTOURS-IRIS_3-0__GPKG_LAMB93_FXX_2025-01-01/CONTOURS-IRIS/1_DONNEES_LIVRAISON_2025-06-00117/CONTOURS-IRIS_3-0_GPKG_LAMB93_FXX-ED2025-01-01/iris.gpkg"
+IRIS_FILE = "raw_data/CONTOURS-IRIS_3-0__GPKG_LAMB93_FXX_2025-01-01/CONTOURS-IRIS/1_DONNEES_LIVRAISON_2025-06-00117/CONTOURS-IRIS_3-0_GPKG_LAMB93_FXX-ED2025-01-01/iris.gpkg"
 
 def find_column(gdf, candidates, required=True):
     """Find a column using a list of possible field names."""
@@ -259,9 +259,9 @@ def assign_iris_to_restaurants(restaurant_file, output_file):
 if __name__ == "__main__":
     for department_name in DEPARTMENT_LIST:
         restaurant_file = (
-            f"raw_resources/commerces/commerces_osm_{department_name}.csv"
+            f"raw_data/commerces/commerces_osm_{department_name}.csv"
         )
         output_file = (
-            f"processed_resources/commerces/commerces_osm_{department_name}.csv"
+            f"processed_data/commerces/commerces_osm_{department_name}.csv"
         )
         assign_iris_to_restaurants(restaurant_file, output_file)

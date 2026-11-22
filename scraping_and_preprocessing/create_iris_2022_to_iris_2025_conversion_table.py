@@ -10,7 +10,7 @@ from pathlib import Path
 # =====================================================
 
 FICHIER_2022 = (
-    Path("raw_resources")
+    Path("raw_data")
     / "CONTOURS-IRIS_2-1__SHP__FRA_2022-01-01"
     / "CONTOURS-IRIS"
     / "1_DONNEES_LIVRAISON_2022-06-00180"
@@ -19,7 +19,7 @@ FICHIER_2022 = (
 )
 
 FICHIER_2025 = (
-    Path("raw_resources")
+    Path("raw_data")
     / "CONTOURS-IRIS_3-0__GPKG_LAMB93_FXX_2025-01-01"
     / "CONTOURS-IRIS"
     / "1_DONNEES_LIVRAISON_2025-06-00117"
@@ -27,7 +27,7 @@ FICHIER_2025 = (
     / "iris.gpkg"
 )
 
-SORTIE = Path("processed_resources/iris_table_conversion")
+SORTIE = Path("processed_data/iris_table_conversion")
 SORTIE.mkdir(parents=True, exist_ok=True)
 
 SEUIL_PCT = 0.01

@@ -14,7 +14,7 @@ Usage:
     python download_all_commerces.py
 
 Output:
-    raw_resources/commerces/commerces_osm_paris.csv
+    raw_data/commerces/commerces_osm_paris.csv
 """
 
 import csv
@@ -387,7 +387,7 @@ def main():
 
         rows = download_department_commerces(department_name)
 
-        output_dir = "raw_resources/commerces"
+        output_dir = "raw_data/commerces"
         os.makedirs(output_dir, exist_ok=True)
 
         output_name = (
