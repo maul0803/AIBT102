@@ -2,6 +2,7 @@ legacy*
 pyproject.toml
 .venv
 .idea
-#scraping_and_preprocessing/raw_data/*
-#scraping_and_preprocessing/processed_data/*
-#cleaning/cleaned_data/*
+scraping_and_preprocessing/raw_data/*
+scraping_and_preprocessing/processed_data/*
+cleaning/cleaned_data/*
+database/database_duckdb*
